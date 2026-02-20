@@ -1,0 +1,56 @@
+import { ArrowDown } from "lucide-react";
+
+export function Hero() {
+  return (
+    <section
+      id="inicio"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden"
+    >
+      {/* Background image */}
+      <div className="absolute inset-0">
+        <img
+          src="/images/hero.jpg"
+          alt="Sabor artesanal de La Lucentina"
+          className="h-full w-full object-cover"
+        />
+        {/* Overlay para asegurar que el texto blanco se lea bien sobre la imagen */}
+        <div className="absolute inset-0 bg-black/60" />
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10 mx-auto max-w-4xl px-6 text-center">
+        <p className="mb-4 text-xs uppercase tracking-[0.3em] text-white/70 md:text-sm">
+          Tu tienda de confianza
+        </p>
+        <h1 className="text-balance text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl md:text-7xl">
+          PIZZERIA, PASTELERIA
+          <br />Y BOCADILLERÍA
+        </h1>
+        <p className="mx-auto mt-6 max-w-xl text-pretty text-base leading-relaxed text-white/80 md:text-lg">
+          Pizzas en horno de piedra, pastelería fina, empanadas, bolleria
+          artesanal, tartas, helados, alimentacion y mucho más.
+        </p>
+        <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+          <a
+            href="#carta"
+            className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 text-sm font-semibold text-black transition-opacity hover:opacity-90"
+          >
+            Ver la Carta
+            <ArrowDown className="h-4 w-4" />
+          </a>
+          <a
+            href="tel:+34912345678"
+            className="inline-flex items-center gap-2 rounded-full border border-white/30 px-8 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+          >
+            Pedir por teléfono
+          </a>
+        </div>
+      </div>
+
+      {/* Scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+        <ArrowDown className="h-5 w-5 text-white/50" />
+      </div>
+    </section>
+  );
+}
