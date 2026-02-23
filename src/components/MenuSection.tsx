@@ -5,8 +5,7 @@ import { Phone, ChevronLeft, ChevronRight } from "lucide-react";
 import { menuCategories } from "../lib/menu-data";
 import { ProductCard } from "./ProductCard";
 import { AllergenTable } from "./AllergenTable";
-
-import { CONTACT_INFO } from "../config/constants";
+import { CONTACT_INFO } from "../config/Constants";
 
 export function MenuSection() {
   const [activeCategory, setActiveCategory] = useState(menuCategories[0].id);

@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { Phone, Menu, X } from "lucide-react";
-
-// Cambia esto por el teléfono real de tu amigo
-const PHONE_NUMBER = "tel:+34912345678";
+import { CONTACT_INFO } from "../config/Constants";
 
 const navLinks = [
   { label: "Inicio", href: "#inicio" },
@@ -40,7 +38,7 @@ export function Navbar() {
         {/* CTA + Mobile toggle */}
         <div className="flex items-center gap-3">
           <a
-            href={PHONE_NUMBER}
+            href={CONTACT_INFO.phone}
             className="hidden items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 md:flex"
           >
             <Phone className="h-4 w-4" />
@@ -77,7 +75,7 @@ export function Navbar() {
             ))}
           </ul>
           <a
-            href={PHONE_NUMBER}
+            href={CONTACT_INFO.phone}
             className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground"
           >
             <Phone className="h-4 w-4" />
