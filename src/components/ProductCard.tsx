@@ -1,10 +1,9 @@
+import type { Product } from "@/interfaces/Product";
 import { Phone, AlertTriangle, ChevronRight } from "lucide-react";
-import { allergenLabels, type MenuItem } from "../lib/menu-data";
+import { useNavigate } from "react-router";
 
-// Importamos los tipos y etiquetas desde tu archivo de datos
-
-export function ProductCard({ item }: { item: MenuItem }) {
-  /* const navigate = useNavigate(); */
+export function ProductCard({ item }: { item: Product }) {
+  const navigate = useNavigate();
   return (
     <>
       <article className="group md:flex flex-col overflow-hidden rounded-xl border border-border bg-card transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hidden">
@@ -35,7 +34,7 @@ export function ProductCard({ item }: { item: MenuItem }) {
 
           {/* Alérgenos */}
           <div className="mt-4 min-h-[40px]">
-            {item.allergens.length > 0 ? (
+            {item.allergens && item.allergens.length > 0 ? (
               <div className="flex flex-wrap items-center gap-1.5">
                 <AlertTriangle className="h-3 w-3 shrink-0 text-muted-foreground" />
                 {item.allergens.map((a) => (
@@ -43,7 +42,7 @@ export function ProductCard({ item }: { item: MenuItem }) {
                     key={a}
                     className="rounded-md border border-border bg-secondary/70 px-1.5 py-0.5 text-[10px] font-medium leading-tight text-muted-foreground uppercase"
                   >
-                    {allergenLabels[a] || a}
+                    {a}
                   </span>
                 ))}
               </div>
@@ -66,11 +65,13 @@ export function ProductCard({ item }: { item: MenuItem }) {
           </div>
         </div>
       </article>
+      // Versión móvil simplificada para mejor rendimiento y usabilidad en
+      dispositivos pequeños
       <button
-        onClick={() => {} /*  navigate(`/producto/${item.name}`) */}
+        onClick={() => navigate(`/producto/${item.id}`)}
         className="md:hidden flex w-full bg-white border border-black overflow-hidden group hover:shadow-lg transition-all duration-300 active:bg-gray-50"
       >
-        <div className="w-24 h-24 flex-shrink-0 overflow-hidden bg-gray-100">
+        <div className="w-24 h-24 shrink-0 overflow-hidden bg-gray-100">
           <img
             src={item.image}
             alt={item.name}
