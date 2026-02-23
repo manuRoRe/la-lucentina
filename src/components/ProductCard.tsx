@@ -65,25 +65,52 @@ export function ProductCard({ item }: { item: Product }) {
           </div>
         </div>
       </article>
-      // Versión móvil simplificada para mejor rendimiento y usabilidad en
-      dispositivos pequeños
+      {/*  Versión móvil simplificada para mejor rendimiento y usabilidad en
+      dispositivos pequeños */}
       <button
         onClick={() => navigate(`/producto/${item.id}`)}
-        className="md:hidden flex w-full bg-white border border-black overflow-hidden group hover:shadow-lg transition-all duration-300 active:bg-gray-50"
+        className="md:hidden relative flex w-full items-center gap-4 bg-white p-3 border-b border-gray-100 group active:bg-gray-50 transition-colors"
       >
-        <div className="w-24 h-24 shrink-0 overflow-hidden bg-gray-100">
+        {/* Contenedor de Imagen: Redondeado suave y sombra sutil */}
+        <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-lg bg-gray-100 shadow-sm">
           <img
-            src={item.image}
+            src={item.image || "/placeholder-pizza.jpg"}
             alt={item.name}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
           />
         </div>
-        <div className="flex-1 p-4 flex flex-col justify-between">
-          <div>
-            <h3 className="text-sm font-bold line-clamp-2 mb-1">{item.name}</h3>
-            <p className="text-xs text-gray-600">{item.price.toFixed(2)}€</p>
+
+        {/* Información del Producto */}
+        <div className="flex flex-1 flex-col pr-6">
+          <div className="flex items-start justify-between gap-2">
+            <h3 className="text-2xl font-bold leading-tight text-black line-clamp-2 uppercase tracking-tight">
+              {item.name}
+            </h3>
           </div>
-          <ChevronRight className="h-4 w-4 text-gray-400 absolute right-3 top-1/2 -translate-y-1/2" />
+
+          <div className="mt-1 flex items-center justify-end gap-2">
+            <span className="text-sm font-black text-black">
+              {item.price.toFixed(2)}€
+            </span>
+          </div>
+
+          {/* Etiquetas de alérgenos simplificadas para móvil */}
+          {item.allergens && item.allergens.length > 0 && (
+            <div className="mt-2 flex gap-1">
+              {item.allergens.slice(0, 3).map((a) => (
+                <div
+                  key={a}
+                  className="h-1.5 w-1.5 rounded-full bg-gray-200"
+                  title={a}
+                />
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Indicador de navegación más elegante */}
+        <div className="absolute right-2">
+          <ChevronRight className="h-5 w-5 text-gray-300 group-active:text-black transition-colors" />
         </div>
       </button>
     </>
