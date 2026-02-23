@@ -33,14 +33,14 @@ export function Hero() {
         <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
           <a
             href="#carta"
-            className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 text-sm font-semibold text-black transition-opacity hover:opacity-90"
+            className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 text-sm font-semibold text-black transition-all duration-300 hover:shadow-[0_0_20px_5px_rgba(255,255,255,0.5)] hover:brightness-110"
           >
             Ver la Carta
             <ArrowDown className="h-4 w-4" />
           </a>
           <a
             href="tel:+34912345678"
-            className="inline-flex items-center gap-2 rounded-full border border-white/30 px-8 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+            className="inline-flex items-center gap-2 rounded-full border border-white/90 px-8 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-white/20"
           >
             Pedir por teléfono
           </a>
@@ -49,7 +49,9 @@ export function Hero() {
 
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <ArrowDown className="h-5 w-5 text-white/50" />
+        <a href="#carta">
+          <ArrowDown className="h-5 w-5 text-white/50" />
+        </a>
       </div>
     </section>
   );
