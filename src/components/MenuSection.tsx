@@ -1,9 +1,9 @@
 import { CONTACT_INFO } from "@/config/Constants";
 import { ProductCard } from "./ProductCard";
 import { Phone } from "lucide-react";
-import { menuCategories } from "@/lib/menu-data"; // Mantenemos esto para los iconos y títulos
+import { menuCategories } from "@/lib/menu-data";
 import { useRef, useState, useEffect } from "react";
-import { useStickyTabs } from "@/hooks/useStickyTabs"; // Importamos tu cliente y tipo
+import { useStickyTabs } from "@/hooks/useStickyTabs";
 import { supabase } from "@/lib/supabase";
 import type { Product } from "@/interfaces/Product";
 
@@ -13,31 +13,31 @@ export function MenuSection() {
   const [activeCategory, setActiveCategory] = useState(menuCategories[0].id);
   const sectionRef = useRef<HTMLElement>(null);
 
-  // Hook para el comportamiento de la barra de pestañas
   const { isSticky, containerRef, sentinelRef } = useStickyTabs(activeCategory);
 
-  // Carga de datos desde Supabase
   useEffect(() => {
     async function getProducts() {
       setLoading(true);
-      const { data, error } = await supabase.from("products").select("*");
+      // Traemos todos los campos, incluyendo los nuevos id, id_slug y prices
+      const { data, error } = await supabase
+        .from("products")
+        .select("*")
+        .order("product_number", { ascending: true, nullsFirst: false });
 
       if (error) {
         console.error("Error cargando productos:", error);
       } else if (data) {
-        setProducts(data);
+        setProducts(data as Product[]);
       }
       setLoading(false);
     }
 
     getProducts();
-    // Debug: Ver qué productos se han cargado
   }, []);
 
-  // Buscamos la info de la categoría actual (iconos, descripciones fijas)
   const categoryInfo = menuCategories.find((cat) => cat.id === activeCategory)!;
 
-  // Filtramos los productos de Supabase que pertenecen a la categoría activa
+  // Filtrado robusto (maneja mayúsculas/minúsculas de la BD)
   const displayedProducts = products.filter(
     (p) => p.category.toLowerCase() === activeCategory.toLowerCase(),
   );
@@ -57,6 +57,7 @@ export function MenuSection() {
       id="carta"
       className="bg-background py-20 md:py-28"
     >
+      {/* Encabezado */}
       <div className="mx-auto max-w-7xl px-6 mb-12 text-center">
         <p className="mb-3 text-xs uppercase tracking-[0.3em] text-muted-foreground">
           Nuestra Carta
@@ -68,7 +69,7 @@ export function MenuSection() {
 
       <div ref={sentinelRef} className="h-0" aria-hidden="true" />
 
-      {/* Sticky Tabs */}
+      {/* Tabs Stickies */}
       <div
         className={`sticky top-[72px] z-30 transition-shadow ${
           isSticky
@@ -105,7 +106,7 @@ export function MenuSection() {
           <h3 className="text-2xl font-bold md:text-3xl">
             {categoryInfo.title}
           </h3>
-          <p className="mt-2 text-muted-foreground max-w-2xl mx-auto">
+          <p className="mt-2 text-muted-foreground max-w-2xl mx-auto italic">
             {categoryInfo.description}
           </p>
         </div>
@@ -120,25 +121,16 @@ export function MenuSection() {
             className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 animate-in fade-in slide-in-from-bottom-4 duration-500"
           >
             {displayedProducts.map((item) => (
+              // Pasamos el objeto completo. ProductCard deberá usar item.prices
               <ProductCard key={item.id} item={item} />
             ))}
           </div>
         )}
 
-        {/* Adaptamos la tabla de alérgenos para que use los productos filtrados de la BD */}
-        {/* {!loading && displayedProducts.length > 0 && (
-          <AllergenTable 
-            category={{ 
-              ...categoryInfo, 
-              items: displayedProducts as any // Cast temporal para compatibilidad
-            }} 
-          />
-        )} */}
-
         <div className="mt-14 flex justify-center">
           <a
             href={CONTACT_INFO.phone}
-            className="flex items-center gap-2 rounded-full border border-black px-8 py-3 text-sm font-bold hover:bg-black hover:text-white transition-colors"
+            className="flex items-center gap-2 rounded-full border border-black px-8 py-3 text-sm font-bold hover:bg-black hover:text-white transition-colors shadow-sm"
           >
             <Phone className="h-4 w-4" />
             Pide tus {categoryInfo.title.toLowerCase()}
