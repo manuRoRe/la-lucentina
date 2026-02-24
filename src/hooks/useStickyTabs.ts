@@ -19,7 +19,6 @@ export function useStickyTabs(activeId: string, offset = "-73px 0px 0px 0px") {
     return () => observer.disconnect();
   }, [offset]);
 
-  // Auto-centrado de la pestaña activa
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
@@ -29,13 +28,15 @@ export function useStickyTabs(activeId: string, offset = "-73px 0px 0px 0px") {
     ) as HTMLElement | null;
 
     if (activeBtn) {
-      activeBtn.scrollIntoView({
+      const btnCenter = activeBtn.offsetLeft + activeBtn.offsetWidth / 2;
+      const containerCenter = container.offsetWidth / 2;
+      const scrollPos = btnCenter - containerCenter;
+
+      container.scrollTo({
+        left: scrollPos,
         behavior: "smooth",
-        block: "nearest",
-        inline: "center",
       });
     }
   }, [activeId]);
-
   return { isSticky, containerRef, sentinelRef };
 }

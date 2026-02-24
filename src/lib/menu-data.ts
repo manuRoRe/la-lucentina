@@ -2,9 +2,8 @@ import {
   UtensilsCrossed,
   Pizza,
   Sandwich,
-  IceCreamCone,
-  Wine,
-  Croissant,
+  LayoutTemplate,
+  PieChart,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -67,21 +66,21 @@ export const menuCategories: MenuCategory[] = [
   {
     id: "pan_pizzas_xxl",
     title: "Pan Pizza XXL",
-    icon: Croissant,
+    icon: Pizza,
     description:
       "Pan Pizza XXL, + 50cent si los quieres mitad y mitad y +1€ si quieres algun ingrediente extra",
   },
   {
     id: "pizza_al_corte",
     title: "Pizza al Corte",
-    icon: IceCreamCone,
+    icon: LayoutTemplate,
     description:
       "Porciones de pizza al corte, plancha completa = 30x40cm = 4 porciones",
   },
   {
     id: "empanadas",
     title: "Empanadas",
-    icon: Wine,
+    icon: PieChart,
     description:
       "Empanadas de 30x40cm. Si quieres hacer la tuya personalizada, consúltanos.",
   },
