@@ -44,6 +44,11 @@
 @theme inline {
   --font-sans: 'Inter', 'Inter Fallback', sans-serif;
   --font-mono: 'Geist Mono', 'Geist Mono Fallback', monospace;
+  /* Esto crea automáticamente la clase 'font-playfair' */
+  --font-playfair: "Playfair Display", serif;
+
+  /* Esto crea automáticamente la clase 'font-sacramento' */
+  --font-sacramento: "Sacramento", cursive;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);

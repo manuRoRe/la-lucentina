@@ -1,12 +1,7 @@
 import { useState } from "react";
 import { Phone, Menu, X } from "lucide-react";
 import { CONTACT_INFO } from "../config/Constants";
-
-const navLinks = [
-  { label: "Inicio", href: "#inicio" },
-  { label: "Nuestra Carta", href: "#carta" },
-  { label: "Dónde estamos", href: "#ubicacion" },
-];
+import { navLinks } from "@/lib/nav-links";
 
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -15,7 +10,15 @@ export function Navbar() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         {/* Logo */}
-        <a href="#inicio" className="flex flex-col leading-none">
+        <a
+          href="#inicio"
+          className="flex flex-row leading-none justify-center items-center gap-3 text-foreground"
+        >
+          <img
+            src="/images/logoLucentina.jpg"
+            className="size-12 rounded-full"
+            alt="Logo"
+          />
           <span className="text-xl font-bold tracking-tight text-foreground">
             La Lucentina
           </span>

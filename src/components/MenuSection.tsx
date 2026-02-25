@@ -65,7 +65,7 @@ export function MenuSection() {
       <div ref={sentinelRef} className="h-0" aria-hidden="true" />
 
       <div
-        className={`sticky top-[72px] z-30 transition-shadow ${
+        className={`sticky top-[80px] z-30 transition-shadow ${
           isSticky
             ? "bg-background/95 shadow-md backdrop-blur-md"
             : "bg-background"
