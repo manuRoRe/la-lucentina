@@ -1,5 +1,5 @@
 import { Info } from "lucide-react";
-import { type Allergen, allergenLabels } from "@/lib/menu-data"; // Ajusta el path según tu proyecto
+import { allergenLabels, type Allergen } from "@/lib/menu-data";
 import type { Product } from "@/interfaces/Product";
 
 interface AllergenTableProps {
@@ -8,11 +8,12 @@ interface AllergenTableProps {
 }
 
 export function AllergenTable({ categoryTitle, products }: AllergenTableProps) {
-  const presentAllergens = Array.from(
-    new Set(products.flatMap((item) => item.allergens || [])),
-  ).filter((a) => a in allergenLabels) as Allergen[];
-
-  if (presentAllergens.length === 0 || products.length === 0) return null;
+  const allergens = (
+    Object.entries(allergenLabels) as [Allergen, string][]
+  ).map(([key, label]) => ({
+    key,
+    label,
+  }));
 
   return (
     <div className="mt-16 animate-in fade-in duration-700">
@@ -30,12 +31,12 @@ export function AllergenTable({ categoryTitle, products }: AllergenTableProps) {
               <th className="px-4 py-3 text-xs font-bold uppercase tracking-wider">
                 Producto
               </th>
-              {presentAllergens.map((a) => (
+              {allergens.map((a) => (
                 <th
-                  key={a}
+                  key={a.key}
                   className="px-3 py-3 text-center text-[10px] font-bold uppercase tracking-wider"
                 >
-                  {allergenLabels[a]}
+                  {a.label}
                 </th>
               ))}
             </tr>
@@ -49,9 +50,9 @@ export function AllergenTable({ categoryTitle, products }: AllergenTableProps) {
                 <td className="px-4 py-3 font-semibold text-foreground">
                   {item.name}
                 </td>
-                {presentAllergens.map((a) => (
-                  <td key={a} className="px-3 py-3 text-center">
-                    {item.allergens?.includes(a) ? (
+                {allergens.map((a) => (
+                  <td className="px-3 py-3 text-center">
+                    {item.allergens?.includes(a.key) ? (
                       <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-black text-[10px] font-black text-white">
                         !
                       </span>
