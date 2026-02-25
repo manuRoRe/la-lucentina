@@ -126,8 +126,8 @@ export default function ProductPage() {
 
             {/* Badge de número de producto */}
             {product.product_number && (
-              <div className="absolute -top-3 -left-3 h-14 w-14 bg-black text-white flex items-center justify-center rounded-full text-xl font-black shadow-xl border-4 border-white transform -rotate-12 z-10">
-                {product.product_number}
+              <div className="absolute -top-3 -left-3 h-18 w-18 bg-black text-white flex items-center justify-center rounded-full text-xl font-black shadow-xl border-4 border-white transform -rotate-12 z-10">
+                Nº {product.product_number}
               </div>
             )}
           </div>
@@ -140,6 +140,7 @@ export default function ProductPage() {
               </span>
 
               <h1 className="text-4xl md:text-5xl font-black uppercase tracking-tighter mb-6 leading-[0.9]">
+                {product.product_number && `${product.product_number} - `}
                 {product.name}
               </h1>
 

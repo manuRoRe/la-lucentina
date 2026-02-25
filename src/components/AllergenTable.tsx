@@ -50,8 +50,9 @@ export function AllergenTable({ categoryTitle, products }: AllergenTableProps) {
                 <td className="px-4 py-3 font-semibold text-foreground">
                   {item.name}
                 </td>
+                {/* AQUÍ FALTABA LA KEY EN EL TD */}
                 {allergens.map((a) => (
-                  <td className="px-3 py-3 text-center">
+                  <td key={a.key} className="px-3 py-3 text-center">
                     {item.allergens?.includes(a.key) ? (
                       <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-black text-[10px] font-black text-white">
                         !

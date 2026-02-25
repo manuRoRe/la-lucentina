@@ -28,8 +28,8 @@ export function ProductCard({ item }: { item: Product }) {
 
           {/* Número de producto (Badge circular) */}
           {item.product_number && (
-            <span className="absolute left-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-black text-xs font-bold text-white shadow-md">
-              {item.product_number}
+            <span className="absolute left-3 top-3 flex h-10 w-10 items-center justify-center rounded-full bg-black text-xs font-bold text-white shadow-md">
+              Nº {item.product_number}
             </span>
           )}
 
