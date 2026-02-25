@@ -1,4 +1,3 @@
-import { CONTACT_INFO } from "@/config/Constants";
 import { ProductCard } from "./ProductCard";
 import { AllergenTable } from "./AllergenTable";
 import { Phone } from "lucide-react";
@@ -7,6 +6,8 @@ import { useRef, useState, useEffect } from "react";
 import { useStickyTabs } from "@/hooks/useStickyTabs";
 import type { Product } from "@/interfaces/Product";
 import { getProductsAction } from "@/actions/get-all-products";
+import ContactAlert from "./ContactAlert";
+import BlurText from "./BlurText";
 
 export function MenuSection() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -54,6 +55,14 @@ export function MenuSection() {
     >
       {/* Títulos de la sección */}
       <div className="mx-auto max-w-7xl px-6 mb-12 text-center">
+        <BlurText
+          text="LUNES 3X2 EN PIZZAS"
+          delay={300}
+          animateBy="words"
+          direction="bottom"
+          onAnimationComplete={() => console.log("Animation completed!")}
+          className="text-3xl mb-8 align-middle justify-center font-bold tracking-tight text-cyan-800/70 md:text-5xl uppercase"
+        />
         <p className="mb-3 text-xs uppercase tracking-[0.3em] text-muted-foreground">
           Nuestra Carta
         </p>
@@ -136,13 +145,16 @@ export function MenuSection() {
 
         {/* Botón de Llamada a la Acción */}
         <div className="mt-16 flex justify-center">
-          <a
-            href={CONTACT_INFO.phone}
-            className="flex items-center gap-3 rounded-full border-2 border-black bg-white px-10 py-4 text-sm font-black uppercase tracking-widest hover:bg-black hover:text-white transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
-          >
-            <Phone className="h-4 w-4" />
-            Pide tus {categoryInfo.title.toLowerCase()}
-          </a>
+          <ContactAlert>
+            <button
+              type="button"
+              className="flex items-center gap-3 rounded-full border-2 border-black bg-white px-10 py-4 text-sm font-black uppercase tracking-widest hover:bg-black hover:text-white transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
+              aria-label="Llamar a la lucentina"
+            >
+              <Phone className="h-4 w-4" />
+              Pide tus {categoryInfo.title.toLowerCase()}
+            </button>
+          </ContactAlert>
         </div>
       </div>
     </section>

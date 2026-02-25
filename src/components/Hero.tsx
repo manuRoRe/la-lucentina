@@ -1,4 +1,5 @@
 import { ArrowDown } from "lucide-react";
+import ContactAlert from "./ContactAlert";
 
 export function Hero() {
   return (
@@ -38,12 +39,15 @@ export function Hero() {
             Ver la Carta
             <ArrowDown className="h-4 w-4" />
           </a>
-          <a
-            href="tel:+34912345678"
-            className="inline-flex items-center gap-2 rounded-full border border-white/90 px-8 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-white/20"
-          >
-            Pedir por teléfono
-          </a>
+          <ContactAlert>
+            <button
+              type="button"
+              className="inline-flex items-center gap-2 rounded-full border border-white/90 px-8 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-white/20"
+              aria-label="Pedir por teléfono"
+            >
+              Pedir por teléfono
+            </button>
+          </ContactAlert>
         </div>
       </div>
 

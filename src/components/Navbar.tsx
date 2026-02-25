@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Phone, Menu, X } from "lucide-react";
-import { CONTACT_INFO } from "../config/Constants";
 import { navLinks } from "@/lib/nav-links";
+import ContactAlert from "./ContactAlert";
 
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -40,13 +40,16 @@ export function Navbar() {
 
         {/* CTA + Mobile toggle */}
         <div className="flex items-center gap-3">
-          <a
-            href={CONTACT_INFO.phone}
-            className="hidden items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 md:flex"
-          >
-            <Phone className="h-4 w-4" />
-            Llamar para pedir
-          </a>
+          <ContactAlert>
+            <button
+              type="button"
+              className="hidden items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 md:flex"
+              aria-label="Llamar a La Lucentina para pedir"
+            >
+              <Phone className="h-4 w-4" />
+              Llamar para pedir
+            </button>
+          </ContactAlert>
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
             className="inline-flex items-center justify-center rounded-md p-2 text-foreground md:hidden"
@@ -77,13 +80,16 @@ export function Navbar() {
               </li>
             ))}
           </ul>
-          <a
-            href={CONTACT_INFO.phone}
-            className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground"
-          >
-            <Phone className="h-4 w-4" />
-            Llamar para pedir
-          </a>
+          <ContactAlert>
+            <button
+              type="button"
+              className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground"
+              aria-label="Llamar a La Lucentina para pedir"
+            >
+              <Phone className="h-4 w-4" />
+              Llamar para pedir
+            </button>
+          </ContactAlert>
         </div>
       )}
     </header>

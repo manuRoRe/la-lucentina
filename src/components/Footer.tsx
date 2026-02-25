@@ -1,6 +1,7 @@
 import { Phone, Instagram, Facebook } from "lucide-react";
 import { CONTACT_INFO } from "../config/Constants";
 import { navLinks } from "@/lib/nav-links";
+import ContactAlert from "./ContactAlert";
 
 export function Footer() {
   return (
@@ -45,15 +46,18 @@ export function Footer() {
               Contacto
             </h4>
             <div className="flex flex-col gap-4">
-              <a
-                href={CONTACT_INFO.phone}
-                className="flex items-center gap-3 text-sm font-semibold text-white/70 transition-colors hover:text-white"
-              >
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10">
-                  <Phone className="h-4 w-4" />
-                </div>
-                {CONTACT_INFO.phoneLabel}
-              </a>
+              <ContactAlert>
+                <button
+                  type="button"
+                  className="flex items-center gap-3 text-sm font-semibold text-white/70 transition-colors hover:text-white"
+                  aria-label="Llamar a la lucentina"
+                >
+                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10">
+                    <Phone className="h-4 w-4" />
+                  </div>
+                  {CONTACT_INFO.phoneLabel}
+                </button>
+              </ContactAlert>
             </div>
 
             <div className="mt-8 flex gap-4">

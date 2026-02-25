@@ -1,5 +1,6 @@
 import { MapPin, Clock, Phone } from "lucide-react";
 import { CONTACT_INFO } from "../config/Constants";
+import ContactAlert from "./ContactAlert";
 
 const schedule = [
   { day: "Lunes", hours: "10:00 – 15:00 / 18:00 – 00:00" },
@@ -68,12 +69,15 @@ export function LocationSection() {
                 <h3 className="text-lg font-bold text-black uppercase tracking-tight">
                   Teléfono
                 </h3>
-                <a
-                  href={CONTACT_INFO.phone}
-                  className="mt-1 inline-block text-lg font-bold text-black underline underline-offset-4 transition-opacity hover:opacity-70"
-                >
-                  {CONTACT_INFO.phoneLabel}
-                </a>
+                <ContactAlert>
+                  <button
+                    type="button"
+                    className="mt-1 inline-block text-lg font-bold text-black underline underline-offset-4 transition-opacity hover:opacity-70"
+                    aria-label="LLamar a la lucentina"
+                  >
+                    {CONTACT_INFO.phoneLabel}
+                  </button>
+                </ContactAlert>
               </div>
             </div>
 
