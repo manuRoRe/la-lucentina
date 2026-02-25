@@ -2,18 +2,18 @@ import { MapPin, Clock, Phone } from "lucide-react";
 import { CONTACT_INFO } from "../config/Constants";
 
 const schedule = [
-  { day: "Lunes", hours: "Cerrado" },
-  { day: "Martes", hours: "09:00 – 14:00 / 17:00 – 21:00" },
-  { day: "Miércoles", hours: "09:00 – 14:00 / 17:00 – 21:00" },
-  { day: "Jueves", hours: "09:00 – 14:00 / 17:00 – 21:00" },
-  { day: "Viernes", hours: "09:00 – 14:00 / 17:00 – 22:00" },
-  { day: "Sábado", hours: "10:00 – 22:00" },
-  { day: "Domingo", hours: "10:00 – 15:00" },
+  { day: "Lunes", hours: "10:00 – 15:00 / 18:00 – 00:00" },
+  { day: "Martes", hours: "Cerrado" },
+  { day: "Miércoles", hours: "10:00 – 15:00 / 18:00 – 00:00" },
+  { day: "Jueves", hours: "10:00 – 15:00 / 18:00 – 00:00" },
+  { day: "Viernes", hours: "10:00 – 15:00 / 18:00 – 00:00" },
+  { day: "Sábado", hours: "10:00 – 15:00 / 18:00 – 00:00" },
+  { day: "Domingo", hours: "10:00 – 15:30 / 17:30 – 00:30" },
 ];
 
 export function LocationSection() {
   return (
-    <section id="ubicacion" className="bg-gray-50 py-20 md:py-28">
+    <section id="ubicacion" className="bg-gray-50 pb-20 md:pb-28">
       <div className="mx-auto max-w-7xl px-6">
         {/* Encabezado de la sección */}
         <div className="mb-12 text-center md:mb-16">
@@ -30,11 +30,14 @@ export function LocationSection() {
           <div className="overflow-hidden rounded-2xl border border-border shadow-sm">
             <iframe
               title="Ubicación de La Lucentina"
-              src="https://www.openstreetmap.org/export/embed.html?bbox=-3.7038%2C40.4168%2C-3.6938%2C40.4218&layer=mapnik"
-              className="h-80 w-full lg:h-full lg:min-h-[450px]"
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1584.5723203165448!2d-4.481748!3d37.410056!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6d70cb62882ecd%3A0x322c27a96c78a4d0!2sCalle%20Ancha%2C%2052%2C%2014900%20Lucena%2C%20C%C3%B3rdoba%2C%20Espa%C3%B1a!5e0!3m2!1ses!2sus!4v1772018051750!5m2!1ses!2sus"
+              width="600"
+              height="450"
               loading="lazy"
-              style={{ border: 0, filter: "grayscale(1) contrast(1.2)" }} // Toque moderno en blanco y negro
-            />
+              className="h-full w-full border-0"
+              allowFullScreen
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
           </div>
 
           {/* Información de contacto y horario */}
@@ -49,9 +52,9 @@ export function LocationSection() {
                   Dirección
                 </h3>
                 <p className="mt-1 leading-relaxed text-muted-foreground font-medium">
-                  Calle de la Luna, 24
+                  Calle Ancha, 52,
                   <br />
-                  28004 Madrid, España
+                  14900 Lucena, Córdoba, España
                 </p>
               </div>
             </div>
