@@ -2,22 +2,23 @@ import { useState, useEffect, useRef } from "react";
 import { supabase } from "@/lib/supabase";
 import { AlertCircle, Plus, Trash2, Upload, Loader2 } from "lucide-react";
 import type { Product } from "@/interfaces/Product";
-import { allergenLabels } from "@/lib/menu-data";
+import { allergenLabels, menuCategories } from "@/lib/menu-data";
 
 interface ProductFormProps {
   product: Product | null;
   onSave: () => void;
   onCancel: () => void;
 }
-
-const categories = [
-  "pizzas",
-  "pan_pizzas_xxl",
-  "pizza_al_corte",
-  "empanadas",
-  "bocadillos",
-  "entrantes",
-];
+const generateSlug = (cat: string, name: string) => {
+  return `${cat}_${name}`
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9\s_]/g, "")
+    .trim()
+    .replace(/\s+/g, "_")
+    .replace(/_+/g, "_");
+};
 
 export default function ProductForm({
   product,
@@ -114,17 +115,16 @@ export default function ProductForm({
         if (entry.label && entry.value)
           pricesObj[entry.label.toLowerCase()] = parseFloat(entry.value);
       });
+      const finalSlug =
+        !product ||
+        product.name !== formData.name ||
+        product.category !== formData.category
+          ? generateSlug(formData.category, formData.name)
+          : formData.id_slug;
 
       const payload = {
         name: formData.name,
-        id_slug: `${formData.category}_${formData.name}`
-          .toLowerCase()
-          .normalize("NFD") // Separa las letras de sus tildes (ej: "é" -> "e" + "´")
-          .replace(/[\u0300-\u036f]/g, "") // Elimina las tildes sueltas
-          .replace(/[^a-z0-9\s_]/g, "")
-          .trim()
-          .replace(/\s+/g, "_") // Sustituye los espacios por guiones bajos
-          .replace(/_+/g, "_"), // Evita que se junten dos guiones bajos seguidos
+        id_slug: finalSlug,
         description: formData.description,
         category: formData.category,
         image: formData.image,
@@ -188,9 +188,9 @@ export default function ProductForm({
             }
             className="w-full border-2 border-black p-2 outline-none"
           >
-            {categories.map((cat) => (
-              <option key={cat} value={cat}>
-                {cat.replace(/_/g, " ").toUpperCase()}
+            {menuCategories.map((cat) => (
+              <option key={cat.id} value={cat.id}>
+                {cat.title.toUpperCase()}
               </option>
             ))}
           </select>
