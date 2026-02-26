@@ -117,9 +117,14 @@ export default function ProductForm({
 
       const payload = {
         name: formData.name,
-        id_slug:
-          formData.id_slug ||
-          formData.name.toLowerCase().trim().replace(/\s+/g, "_"),
+        id_slug: `${formData.category}_${formData.name}`
+          .toLowerCase()
+          .normalize("NFD") // Separa las letras de sus tildes (ej: "é" -> "e" + "´")
+          .replace(/[\u0300-\u036f]/g, "") // Elimina las tildes sueltas
+          .replace(/[^a-z0-9\s_]/g, "")
+          .trim()
+          .replace(/\s+/g, "_") // Sustituye los espacios por guiones bajos
+          .replace(/_+/g, "_"), // Evita que se junten dos guiones bajos seguidos
         description: formData.description,
         category: formData.category,
         image: formData.image,
