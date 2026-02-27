@@ -101,7 +101,7 @@ export default function ProductPage() {
       <div className="max-w-4xl mx-auto">
         {/* Botón Volver */}
         <button
-          onClick={() => navigate("/carta")}
+          onClick={() => navigate(`/?category=${product.category}`)}
           className="group inline-flex items-center gap-2 text-muted-foreground hover:text-black transition-colors mb-8 font-bold uppercase text-xs tracking-widest"
         >
           <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />

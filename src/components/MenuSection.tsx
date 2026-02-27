@@ -1,19 +1,29 @@
+import { useRef, useState, useEffect } from "react";
+import { useSearchParams } from "react-router"; // Importamos el hook
 import { ProductCard } from "./ProductCard";
 import { AllergenTable } from "./AllergenTable";
-import { Phone } from "lucide-react";
-import { menuCategories } from "@/lib/menu-data";
-import { useRef, useState, useEffect } from "react";
 import { useStickyTabs } from "@/hooks/useStickyTabs";
-import type { Product } from "@/interfaces/Product";
-import { getProductsAction } from "@/actions/get-all-products";
 import ContactAlert from "./ContactAlert";
-import BlurText from "./BlurText";
+
+import { getProductsAction } from "@/actions/get-all-products";
+
+import type { Product } from "@/interfaces/Product";
+import { menuCategories } from "@/lib/menu-data";
+import { Phone } from "lucide-react";
 
 export function MenuSection() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
-  const [activeCategory, setActiveCategory] = useState(menuCategories[0].id);
   const sectionRef = useRef<HTMLElement>(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  // Leemos la categoría de la URL. Si no hay o no es válida, usamos la primera por defecto.
+  const categoryParam = searchParams.get("category");
+  const isValidCategory = menuCategories.some(
+    (cat) => cat.id === categoryParam,
+  );
+  const activeCategory =
+    isValidCategory && categoryParam ? categoryParam : menuCategories[0].id;
 
   const { isSticky, containerRef, sentinelRef } = useStickyTabs(activeCategory);
 
@@ -32,6 +42,20 @@ export function MenuSection() {
     loadData();
   }, []);
 
+  useEffect(() => {
+    if (categoryParam && sectionRef.current) {
+      const timer = setTimeout(() => {
+        const y =
+          sectionRef.current!.getBoundingClientRect().top +
+          window.scrollY +
+          180;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }, 100); // 100ms es suficiente
+
+      return () => clearTimeout(timer);
+    }
+  }, [categoryParam]);
+
   const categoryInfo = menuCategories.find((cat) => cat.id === activeCategory)!;
 
   const displayedProducts = products.filter(
@@ -39,10 +63,11 @@ export function MenuSection() {
   );
 
   function handleTabClick(id: string) {
-    setActiveCategory(id);
+    setSearchParams({ category: id });
+
     if (sectionRef.current) {
       const y =
-        sectionRef.current.getBoundingClientRect().top + window.scrollY - 72;
+        sectionRef.current.getBoundingClientRect().top + window.scrollY + 180;
       window.scrollTo({ top: y, behavior: "smooth" });
     }
   }
@@ -55,14 +80,6 @@ export function MenuSection() {
     >
       {/* Títulos de la sección */}
       <div className="mx-auto max-w-7xl px-6 mb-12 text-center">
-        <BlurText
-          text="LUNES 3X2 EN PIZZAS"
-          delay={300}
-          animateBy="words"
-          direction="bottom"
-          onAnimationComplete={() => console.log("Animation completed!")}
-          className="text-3xl mb-8 align-middle justify-center font-bold tracking-tight text-cyan-800/70 md:text-5xl uppercase"
-        />
         <p className="mb-3 text-xs uppercase tracking-[0.3em] text-muted-foreground">
           Nuestra Carta
         </p>
