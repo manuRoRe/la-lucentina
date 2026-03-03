@@ -2,6 +2,7 @@ import { Phone, Instagram, Facebook } from "lucide-react";
 import { CONTACT_INFO } from "../config/Constants";
 import { navLinks } from "@/lib/nav-links";
 import ContactAlert from "./ContactAlert";
+import { Link } from "react-router";
 
 export function Footer() {
   return (
@@ -89,7 +90,7 @@ export function Footer() {
             © {new Date().getFullYear()} La Lucentina.
           </p>
           <p className="text-[10px] uppercase tracking-widest text-white/20">
-            Diseñado con alma de barrio
+            <Link to="admin-login">Admin</Link>
           </p>
         </div>
       </div>

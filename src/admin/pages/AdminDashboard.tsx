@@ -147,7 +147,9 @@ export function AdminDashboard() {
                       </td>
                       <td className="py-4 px-4">{product.name}</td>
                       <td className="py-4 px-4">{product.category}</td>
-                      <td className="py-4 px-4">{product.prices[0]}€</td>
+                      <td className="py-4 px-4">
+                        {Object.values(product.prices).join(" - ")}€
+                      </td>
 
                       <td className="py-4 px-4">
                         <div className="flex justify-center gap-2">
