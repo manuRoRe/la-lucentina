@@ -10,6 +10,7 @@ import { getProductsAction } from "@/actions/get-all-products";
 import type { Product } from "@/interfaces/Product";
 import { menuCategories } from "@/lib/menu-data";
 import { Phone } from "lucide-react";
+import { Button } from "./ui/button";
 
 export function MenuSection() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -48,7 +49,7 @@ export function MenuSection() {
         const y =
           sectionRef.current!.getBoundingClientRect().top +
           window.scrollY +
-          180;
+          150;
         window.scrollTo({ top: y, behavior: "smooth" });
       }, 100); // 100ms es suficiente
 
@@ -67,7 +68,7 @@ export function MenuSection() {
 
     if (sectionRef.current) {
       const y =
-        sectionRef.current.getBoundingClientRect().top + window.scrollY + 180;
+        sectionRef.current.getBoundingClientRect().top + window.scrollY + 150;
       window.scrollTo({ top: y, behavior: "smooth" });
     }
   }
@@ -86,6 +87,7 @@ export function MenuSection() {
         <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground md:text-5xl uppercase">
           Lo mejor de La Lucentina
         </h2>
+        <a href="#alergenos">Alergenos</a>
       </div>
 
       <div ref={sentinelRef} className="h-0" aria-hidden="true" />
@@ -130,6 +132,9 @@ export function MenuSection() {
           <p className="mt-2 text-muted-foreground max-w-2xl mx-auto italic">
             {categoryInfo.description}
           </p>
+          <Button className="mt-4">
+            <a href="#alergenos">Alérgenos de {categoryInfo.title}</a>
+          </Button>
         </div>
 
         {loading ? (
@@ -153,10 +158,12 @@ export function MenuSection() {
               )}
             </div>
 
-            <AllergenTable
-              categoryTitle={categoryInfo.title}
-              products={displayedProducts}
-            />
+            <section id="alergenos" className="scroll-mt-[100px]">
+              <AllergenTable
+                categoryTitle={categoryInfo.title}
+                products={displayedProducts}
+              />
+            </section>
           </>
         )}
 

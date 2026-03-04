@@ -22,7 +22,11 @@ export function AllergenTable({ categoryTitle, products }: AllergenTableProps) {
 
   return (
     <>
-      <Button className="mt-16" onClick={() => setShowTable(!showTable)}>
+      <Button
+        className="mt-16"
+        variant={showTable ? "outline" : "default"}
+        onClick={() => setShowTable(!showTable)}
+      >
         {showTable ? "Ocultar tabla" : "Mostrar tabla de alergenos"}
       </Button>
       <div
