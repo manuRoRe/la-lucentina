@@ -9,8 +9,6 @@ export default function ProductPage() {
   const navigate = useNavigate();
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
-  const [imgError, setImgError] = useState(false); // Estado para controlar si falla la imagen
-
   // Estado para el tamaño/precio seleccionado
   const [selectedSize, setSelectedSize] = useState<string>("");
 
@@ -95,6 +93,10 @@ export default function ProductPage() {
 
   const priceOptions = Object.keys(product.prices);
   const currentPrice = product.prices[selectedSize] || 0;
+  const productImage =
+    product.image && product.image.length > 0
+      ? product.image
+      : "/images/placeholder.png";
 
   return (
     <div className="min-h-screen bg-white pt-24 pb-12 px-6 animate-in fade-in duration-500">
@@ -113,13 +115,8 @@ export default function ProductPage() {
           <div className="relative group">
             <div className="relative overflow-hidden rounded-sm border-2 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-gray-100">
               <img
-                src={
-                  imgError
-                    ? "/placeholder-food.jpg"
-                    : product.image || "/placeholder-food.jpg"
-                }
+                src={productImage}
                 alt={product.name}
-                onError={() => setImgError(true)}
                 className="w-full aspect-square object-cover transition-transform duration-700 group-hover:scale-105"
               />
             </div>

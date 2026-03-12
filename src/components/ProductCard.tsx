@@ -11,6 +11,11 @@ export function ProductCard({ item }: { item: Product }) {
   const minPrice = Math.min(...priceValues);
   const hasMultiplePrices = priceValues.length > 1;
 
+  const productImage =
+    item.image && item.image.length > 0
+      ? item.image
+      : "/images/placeholder.png";
+
   return (
     <>
       {/* VERSIÓN DESKTOP (Grid) */}
@@ -20,7 +25,7 @@ export function ProductCard({ item }: { item: Product }) {
           onClick={() => navigate(`/producto/${item.id_slug}`)}
         >
           <img
-            src={item.image || "/placeholder-food.jpg"}
+            src={productImage}
             alt={item.name}
             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
           />
@@ -90,7 +95,7 @@ export function ProductCard({ item }: { item: Product }) {
       >
         <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-lg bg-gray-100 shadow-sm">
           <img
-            src={item.image || "/placeholder-food.jpg"}
+            src={productImage}
             alt={item.name}
             className="h-full w-full object-cover"
           />
