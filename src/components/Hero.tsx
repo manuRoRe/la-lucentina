@@ -1,5 +1,6 @@
 import { ArrowDown } from "lucide-react";
 import ContactAlert from "./ContactAlert";
+import TextType from "./ui/TextType";
 
 export function Hero() {
   return (
@@ -23,10 +24,22 @@ export function Hero() {
         <p className="mb-4 text-xs uppercase tracking-[0.3em] text-white/70 md:text-sm">
           Tu tienda de confianza
         </p>
-        <h1 className="text-balance text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl md:text-7xl">
-          PIZZERIA, PASTELERIA
-          <br />Y BOCADILLERÍA
-        </h1>
+        <section className="h-50">
+          <TextType
+            text={[
+              "PIZZERIA, PASTELERIA Y BOCADILLERIA",
+              "LUNES 3x2 PIZZAS",
+              "¿TIENES HAMBRE? ¡PIDE AHORA!",
+            ]}
+            typingSpeed={75}
+            pauseDuration={2500}
+            showCursor
+            cursorCharacter="|"
+            deletingSpeed={20}
+            cursorBlinkDuration={0.5}
+          />
+        </section>
+
         <p className="mx-auto mt-6 max-w-xl text-pretty text-base leading-relaxed text-white/80 md:text-lg">
           Pizzas en horno de piedra, pastelería fina, empanadas, bolleria
           artesanal, tartas, helados, alimentacion y mucho más.
