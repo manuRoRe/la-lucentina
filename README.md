@@ -3,7 +3,7 @@ Estado: 🟢 En Producción | Cliente: Comercio Local (Sector Alimentación/Arte
 
 Este no es un proyecto de aprendizaje más; es una solución real desplegada para La Lucentina, con el objetivo de digitalizar su catálogo y optimizar la captación de clientes locales.
 
-<img src="Portada.png" alt="Portada de la web"></img>
+<img src="/Portada.png" alt="Portada de la web"></img>
 
 🎯 El Reto de Negocio
 El cliente necesitaba una presencia digital profesional que permitiera a los usuarios explorar su catálogo de productos de forma ágil, segura y con un diseño que reflejara la identidad de la tienda. El objetivo principal: rendimiento extremo y seguridad de datos.
