@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Phone, Menu, X } from "lucide-react";
 import { navLinks } from "@/lib/nav-links";
 import ContactAlert from "./ContactAlert";
+import { HashLink } from "react-router-hash-link";
 
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -10,8 +11,9 @@ export function Navbar() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         {/* Logo */}
-        <a
-          href="#inicio"
+        <HashLink
+          smooth
+          to="/#inicio"
           className="flex flex-row leading-none justify-center items-center gap-3 text-foreground"
         >
           <img
@@ -22,18 +24,19 @@ export function Navbar() {
           <span className="text-xl font-bold tracking-tight text-foreground">
             La Lucentina
           </span>
-        </a>
+        </HashLink>
 
         {/* Desktop nav */}
         <ul className="hidden items-center gap-8 md:flex">
           {navLinks.map((link) => (
             <li key={link.href}>
-              <a
-                href={link.href}
+              <HashLink
+                smooth
+                to={link.href}
                 className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
               >
                 {link.label}
-              </a>
+              </HashLink>
             </li>
           ))}
         </ul>

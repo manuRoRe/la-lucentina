@@ -3,6 +3,7 @@ import { CONTACT_INFO } from "../config/Constants";
 import { navLinks } from "@/lib/nav-links";
 import ContactAlert from "./ContactAlert";
 import { Link } from "react-router";
+import { HashLink } from "react-router-hash-link";
 
 export function Footer() {
   return (
@@ -30,12 +31,13 @@ export function Footer() {
             <ul className="flex flex-col gap-4">
               {navLinks.map((link) => (
                 <li key={link.href}>
-                  <a
-                    href={link.href}
+                  <HashLink
+                    smooth
+                    to={link.href}
                     className="text-sm font-medium text-white/70 transition-colors hover:text-white"
                   >
                     {link.label}
-                  </a>
+                  </HashLink>
                 </li>
               ))}
             </ul>
