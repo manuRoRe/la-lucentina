@@ -1,5 +1,5 @@
 import type { Product } from "@/interfaces/Product";
-import { Phone, AlertTriangle, ChevronRight } from "lucide-react";
+import { AlertTriangle, ChevronRight } from "lucide-react";
 import { useNavigate } from "react-router";
 
 export function ProductCard({ item }: { item: Product }) {
@@ -74,16 +74,6 @@ export function ProductCard({ item }: { item: Product }) {
                 Sin alérgenos
               </p>
             )}
-          </div>
-
-          <div className="mt-4 border-t border-border pt-4">
-            <a
-              href={`tel:${import.meta.env.VITE_PHONE_NUMBER}`}
-              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-black px-4 py-2.5 text-xs font-bold text-white transition-all hover:bg-neutral-800 active:scale-95"
-            >
-              <Phone className="h-3.5 w-3.5" />
-              PEDIR AHORA
-            </a>
           </div>
         </div>
       </article>
