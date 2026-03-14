@@ -63,7 +63,7 @@ export function ProductCard({ item }: { item: Product }) {
                 {item.allergens.map((a) => (
                   <span
                     key={a}
-                    className="rounded-md border border-border bg-secondary/70 px-1.5 py-0.5 text-[11px] font-bold text-muted-foreground uppercase"
+                    className="rounded-md border border-border bg-secondary/70 px-1.5 py-0.5 text-[11px] font-bold text-foreground uppercase"
                   >
                     {a}
                   </span>
