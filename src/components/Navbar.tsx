@@ -17,7 +17,7 @@ export function Navbar() {
           <img
             src="/images/logoLucentina.jpg"
             className="size-12 rounded-full"
-            alt="Logo"
+            alt="Logo de la tienda"
           />
           <span className="text-xl font-bold tracking-tight text-foreground">
             La Lucentina
