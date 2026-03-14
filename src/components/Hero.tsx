@@ -25,19 +25,21 @@ export function Hero() {
           Tu tienda de confianza
         </p>
         <section className="h-50">
-          <TextType
-            text={[
-              "PIZZERIA, PASTELERIA Y BOCADILLERIA",
-              "LUNES 3x2 PIZZAS",
-              "¿TIENES HAMBRE? ¡PIDE AHORA!",
-            ]}
-            typingSpeed={75}
-            pauseDuration={2500}
-            showCursor
-            cursorCharacter="|"
-            deletingSpeed={20}
-            cursorBlinkDuration={0.5}
-          />
+          <h1>
+            <TextType
+              text={[
+                "PIZZERIA, PASTELERIA Y BOCADILLERIA",
+                "LUNES 3x2 PIZZAS",
+                "¿TIENES HAMBRE? ¡PIDE AHORA!",
+              ]}
+              typingSpeed={75}
+              pauseDuration={2500}
+              showCursor
+              cursorCharacter="|"
+              deletingSpeed={20}
+              cursorBlinkDuration={0.5}
+            />
+          </h1>
         </section>
 
         <p className="mx-auto mt-6 max-w-xl text-pretty text-base leading-relaxed text-white/80 md:text-lg">
