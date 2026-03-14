@@ -3,6 +3,7 @@ import { ArrowLeft, AlertCircle, Phone, Info } from "lucide-react";
 import { useNavigate, useParams } from "react-router";
 import { supabase } from "@/lib/supabase";
 import type { Product } from "@/interfaces/Product";
+import ContactAlert from "@/components/ContactAlert";
 
 export default function ProductPage() {
   const { id } = useParams<{ id: string }>();
@@ -132,7 +133,7 @@ export default function ProductPage() {
           {/* COLUMNA DERECHA: INFO */}
           <div className="flex flex-col">
             <div className="flex-1">
-              <span className="inline-flex px-3 py-1 bg-neutral-100 text-neutral-600 text-[10px] font-black uppercase tracking-widest mb-4 rounded-full border border-neutral-200">
+              <span className="inline-flex px-3 py-1 bg-neutral-100 text-black/60 text-[12px] font-black uppercase tracking-widest mb-4 rounded-full border border-neutral-200">
                 {product.category}
               </span>
 
@@ -144,7 +145,7 @@ export default function ProductPage() {
               {/* Selector de Tamaños (Con efecto de iluminación) */}
               {priceOptions.length > 0 && (
                 <div className="mb-8">
-                  <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-3">
+                  <p className="text-[12px] font-bold uppercase tracking-widest text-black/60 mb-3">
                     Tamaño / Opción
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -182,15 +183,15 @@ export default function ProductPage() {
                 <div className="mb-8">
                   <div className="flex items-center gap-2 mb-3">
                     <AlertCircle className="h-4 w-4 text-orange-500" />
-                    <h3 className="font-bold text-xs uppercase tracking-widest text-gray-400">
+                    <h2 className="font-bold text-xs uppercase tracking-widest text-gray-600">
                       Alérgenos e Intolerancias
-                    </h3>
+                    </h2>
                   </div>
                   <div className="flex flex-wrap gap-2">
                     {product.allergens.map((allergen) => (
                       <span
                         key={allergen}
-                        className="px-3 py-1 bg-orange-50 text-orange-700 border border-orange-100 rounded-full text-[10px] font-bold uppercase tracking-wide"
+                        className="px-3 py-1 bg-orange-50 text-orange-700 border border-orange-100 rounded-full text-[12px] font-bold uppercase tracking-wide"
                       >
                         {allergen}
                       </span>
@@ -202,17 +203,17 @@ export default function ProductPage() {
 
             {/* CTA Fijo en Móvil (opcional) o normal */}
             <div className="mt-auto pt-6 border-t border-gray-100">
-              <a
-                href={`tel:${import.meta.env.VITE_PHONE_NUMBER}`}
-                className="group relative flex w-full items-center justify-center gap-3 overflow-hidden bg-black text-white py-4 rounded-lg text-lg font-black uppercase tracking-tight shadow-xl transition-all hover:bg-neutral-800 hover:shadow-2xl active:scale-[0.98]"
-              >
-                {/* Efecto de brillo en el botón al hacer hover */}
-                <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-white/10 to-transparent z-10" />
+              <ContactAlert>
+                <button className="group relative flex w-full items-center justify-center gap-3 overflow-hidden bg-black text-white py-4 rounded-lg text-lg font-black uppercase tracking-tight shadow-xl transition-all hover:bg-neutral-800 hover:shadow-2xl active:scale-[0.98]">
+                  {/* Efecto de brillo en el botón al hacer hover */}
+                  <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-white/10 to-transparent z-10" />
 
-                <Phone className="h-5 w-5 fill-current" />
-                <span>Pedir ahora</span>
-              </a>
-              <p className="text-center text-[10px] text-gray-400 mt-3 uppercase tracking-wider">
+                  <Phone className="h-5 w-5 fill-current" />
+                  <span>Pedir ahora</span>
+                </button>
+              </ContactAlert>
+
+              <p className="text-center text-[12px] text-gray-600 mt-3 uppercase tracking-wider">
                 Llama para encargar tu pedido
               </p>
             </div>
