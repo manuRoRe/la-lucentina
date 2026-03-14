@@ -13,7 +13,7 @@ export function Footer() {
             <h3 className="text-2xl font-bold tracking-tighter">
               La Lucentina
             </h3>
-            <p className="mt-1 text-[10px] uppercase tracking-[0.3em] text-white/50">
+            <p className="mt-1 text-[12px] uppercase tracking-[0.3em] text-white/50">
               Tu Tienda de Confianza
             </p>
             <p className="mt-6 max-w-xs text-sm leading-relaxed text-white/70">
@@ -86,10 +86,10 @@ export function Footer() {
 
         {/* Copyright inferior */}
         <div className="mt-16 border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-[10px] uppercase tracking-widest text-white/40 text-center md:text-left">
+          <p className="text-[12px] uppercase tracking-widest text-white/40 text-center md:text-left">
             © {new Date().getFullYear()} La Lucentina.
           </p>
-          <p className="text-[10px] uppercase tracking-widest text-white/20">
+          <p className="text-[12px] uppercase tracking-widest text-white/20">
             <Link to="admin-login">Admin</Link>
           </p>
         </div>
