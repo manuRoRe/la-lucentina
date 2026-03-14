@@ -55,7 +55,7 @@ export function AllergenTable({ categoryTitle, products }: AllergenTableProps) {
                 {allergens.map((a) => (
                   <th
                     key={a.key}
-                    className="px-3 py-3 text-center text-[10px] font-bold uppercase tracking-wider"
+                    className="px-3 py-3 text-center text-[12px] font-bold uppercase tracking-wider"
                   >
                     {a.label}
                   </th>
@@ -75,7 +75,7 @@ export function AllergenTable({ categoryTitle, products }: AllergenTableProps) {
                   {allergens.map((a) => (
                     <td key={a.key} className="px-3 py-3 text-center">
                       {item.allergens?.includes(a.key) ? (
-                        <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-black text-[10px] font-black text-white">
+                        <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-black text-[12px] font-black text-white">
                           !
                         </span>
                       ) : (
@@ -92,7 +92,7 @@ export function AllergenTable({ categoryTitle, products }: AllergenTableProps) {
         </div>
 
         <div className="mt-4 rounded-lg bg-gray-100 p-4">
-          <p className="text-[10px] leading-relaxed text-muted-foreground uppercase font-bold tracking-tight">
+          <p className="text-[12px] leading-relaxed text-muted-foreground uppercase font-bold tracking-tight">
             Nota: El símbolo (!) indica presencia. Consulta siempre con nuestro
             personal.
           </p>
