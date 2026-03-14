@@ -86,7 +86,7 @@ export function ProductCard({ item }: { item: Product }) {
         <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-lg bg-gray-100 shadow-sm">
           <img
             src={productImage}
-            alt={item.name}
+            alt={item.description}
             className="h-full w-full object-cover"
           />
           {item.product_number && (
