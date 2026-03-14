@@ -132,8 +132,10 @@ export function MenuSection() {
           <p className="mt-2 text-muted-foreground max-w-2xl mx-auto italic">
             {categoryInfo.description}
           </p>
-          <Button className="mt-4">
-            <a href="#alergenos">Alérgenos de {categoryInfo.title}</a>
+          <Button className="mt-4 p">
+            <a href="#alergenos" className="inline-flex items-center px-4 py-3">
+              Alérgenos de {categoryInfo.title}
+            </a>
           </Button>
         </div>
 

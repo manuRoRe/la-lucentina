@@ -24,7 +24,7 @@ export function Footer() {
 
           {/* Enlaces rápidos */}
           <div>
-            <h4 className="mb-6 text-xs font-bold uppercase tracking-widest text-white/40">
+            <h4 className="mb-6 text-xs font-bold uppercase tracking-widest text-white/50">
               Navegación
             </h4>
             <ul className="flex flex-col gap-4">
@@ -43,7 +43,7 @@ export function Footer() {
 
           {/* Contacto y Redes Sociales */}
           <div>
-            <h4 className="mb-6 text-xs font-bold uppercase tracking-widest text-white/40">
+            <h4 className="mb-6 text-xs font-bold uppercase tracking-widest text-white/50">
               Contacto
             </h4>
             <div className="flex flex-col gap-4">
@@ -86,10 +86,10 @@ export function Footer() {
 
         {/* Copyright inferior */}
         <div className="mt-16 border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-[12px] uppercase tracking-widest text-white/40 text-center md:text-left">
+          <p className="text-[12px] uppercase tracking-widest text-white/50 text-center md:text-left">
             © {new Date().getFullYear()} La Lucentina.
           </p>
-          <p className="text-[12px] uppercase tracking-widest text-white/20">
+          <p className="text-[12px] uppercase tracking-widest text-white/50">
             <Link to="admin-login">Admin</Link>
           </p>
         </div>
