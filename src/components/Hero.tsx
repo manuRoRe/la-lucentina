@@ -66,7 +66,7 @@ export function Hero() {
 
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <a href="#carta">
+        <a href="#carta" aria-label="Ir a la sección carta">
           <ArrowDown className="h-5 w-5 text-white/50" />
         </a>
       </div>
